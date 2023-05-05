@@ -34,7 +34,7 @@ export default {
                 <span class="text-light">Found {{ store.arrayCarte.length }} cards</span>
             </div>
             <div class="container">
-                <div class="row justify-content-between gap-5">
+                <div class="row justify-content-between gap-4">
                     <Carte v-for="(carte, index) in store.arrayCarte" :key="index" :carteYuGiOh="carte" />
                 </div>
             </div>
