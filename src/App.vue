@@ -20,7 +20,7 @@ export default {
       .then((res) => {
         console.log(res.data.data)
 
-        const datiApi = res.data
+        const datiApi = res.data.data
 
         this.store.arrayCarte = datiApi
       })
