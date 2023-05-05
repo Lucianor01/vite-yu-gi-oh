@@ -16,13 +16,24 @@ export default {
 </script>
 
 <template>
-    <div class="card col-2" style="width: 18rem;">
-        <img :src="carteYuGiOh.card_images[0].image_url" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{ carteYuGiOh.name }}</h5>
-            <p class="card-text"></p>
+    <div class="card col-12 col-md-5 col-lg-2 p-0">
+        <img :src="carteYuGiOh.card_images[0].image_url" class="card-img-top" :alt="carteYuGiOh.name">
+        <div class="card-body text-center">
+            <h5 class="card-title text-light">{{ carteYuGiOh.name }}</h5>
+            <span class="card-text">
+                {{ carteYuGiOh.archetype == null ? 'undefined' : carteYuGiOh.archetype }}
+            </span>
         </div>
     </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.card {
+
+    // width: 22%;
+
+    .card-body {
+        background-color: hsl(33, 64%, 53%);
+    }
+}
+</style>

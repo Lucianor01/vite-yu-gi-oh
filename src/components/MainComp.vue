@@ -20,8 +20,8 @@ export default {
 </script>
 
 <template>
-    <div class="container p-4">
-        <div class="mb-4">
+    <div class="container-fluid p-4">
+        <div class="container mb-4">
             <select class="form-select" aria-label="Default select example">
                 <option selected>Alien</option>
                 <option value="1">One</option>
@@ -31,10 +31,12 @@ export default {
         </div>
         <div class="container p-5" id="container-cards">
             <div class="bg-dark p-3">
-                <span class="text-light">Found 39 cards</span>
+                <span class="text-light">Found {{ store.arrayCarte.length }} cards</span>
             </div>
-            <div class="row">
-                <Carte v-for="(carte, index) in store.arrayCarte" :key="index" :carteYuGiOh="carte" />
+            <div class="container">
+                <div class="row justify-content-between gap-5">
+                    <Carte v-for="(carte, index) in store.arrayCarte" :key="index" :carteYuGiOh="carte" />
+                </div>
             </div>
         </div>
     </div>

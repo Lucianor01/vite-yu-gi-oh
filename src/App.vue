@@ -16,7 +16,7 @@ export default {
     }
   },
   created() {
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=3')
+    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0')
       .then((res) => {
         console.log(res.data.data)
 
