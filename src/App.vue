@@ -1,17 +1,39 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import axios from 'axios';
+import { store } from './store';
+import HeaderComp from './components/HeaderComp.vue';
+import MainComp from './components/MainComp.vue';
 
 export default {
   name: "App",
   components: {
+    HeaderComp,
+    MainComp,
+  },
+  data() {
+    return {
+      store
+    }
+  },
+  created() {
+    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=10&offset=3')
+      .then((res) => {
+        console.log(res.data.data)
 
-  }
+        const datiApi = res.data
+
+        this.store.arrayCarte = datiApi
+      })
+  },
 }
 
 </script>
 
 <template>
-  <h1>Ciao mondo</h1>
+  <HeaderComp />
+  <main>
+    <MainComp />
+  </main>
 </template>
 
 <style lang="scss">

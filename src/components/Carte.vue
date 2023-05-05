@@ -1,15 +1,15 @@
 <script>
 
 export default {
-  name: "",
-  data() {
-    return {
+    name: "Carte",
+    data() {
+        return {
 
-    }
-  },
-  methods: {
+        }
+    },
+    methods: {
 
-  },
+    },
 }
 
 </script>
