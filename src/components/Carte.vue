@@ -30,8 +30,6 @@ export default {
 <style lang="scss" scoped>
 .card {
 
-    // width: 22%;
-
     .card-body {
         background-color: hsl(33, 64%, 53%);
     }

@@ -1,5 +1,5 @@
 <script>
-import axios from 'axios';
+
 import { store } from './store';
 import HeaderComp from './components/HeaderComp.vue';
 import MainComp from './components/MainComp.vue';
@@ -16,17 +16,23 @@ export default {
     }
   },
   created() {
-    axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0')
-      .then((res) => {
-        console.log(res.data.data)
+    // this.apiCarte
+    //this.archetypesApi
+  },
+  computed: {
+    // apiCarte() {
+    //   axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0')
+    //     .then((res) => {
+    //       console.log(res.data.data)
 
-        const datiApi = res.data.data
+    //       const datiApi = res.data.data
 
-        this.store.arrayCarte = datiApi
-      })
+    //       this.store.arrayCarte = datiApi
+    //     })
+    // },
+
   },
 }
-
 </script>
 
 <template>
