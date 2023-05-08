@@ -1,8 +1,13 @@
 <script>
 import { store } from '../store';
 import axios from 'axios';
+import LoaderComp from './LoaderComp.vue'
+
 export default {
     name: "SelectCarte",
+    components: {
+        LoaderComp
+    },
     data() {
         return {
             store
@@ -13,11 +18,16 @@ export default {
     },
     computed: {
         archetypesApi() {
+
+            store.loadingData = true
+
             if (store.arraySelect !== '') {
 
                 axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.arraySelect}`)
                     .then((res) => {
                         // console.log(res.data.data)
+
+                        store.loadingData = false
 
                         const datiApi = res.data.data
 
@@ -27,6 +37,8 @@ export default {
                 axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0`)
                     .then((res) => {
                         // console.log(res.data.data)
+
+                        store.loadingData = false
 
                         const datiApi = res.data.data
 
@@ -40,6 +52,7 @@ export default {
 </script>
 
 <template>
+    <LoaderComp v-if="store.loadingData" />
     <div class="container mb-4">
         <select class="form-select" aria-label="Default select example" v-model="store.arraySelect" @click="archetypesApi">
             <option disabled value="">Please select one</option>
