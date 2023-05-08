@@ -7,16 +7,32 @@ export default {
         return {
             store
         }
-    }, methods: {
+    },
+    created() {
+        this.archetypesApi
+    },
+    computed: {
         archetypesApi() {
-            axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${this.store.arraySelect}`)
-                .then((res) => {
-                    console.log(res.data.data)
+            if (store.arraySelect !== '') {
 
-                    const datiApi = res.data.data
+                axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.arraySelect}`)
+                    .then((res) => {
+                        // console.log(res.data.data)
 
-                    this.store.arraySelect = datiApi
-                })
+                        const datiApi = res.data.data
+
+                        store.arrayCarte = datiApi
+                    })
+            } else {
+                axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0`)
+                    .then((res) => {
+                        // console.log(res.data.data)
+
+                        const datiApi = res.data.data
+
+                        store.arrayCarte = datiApi
+                    })
+            }
         }
     }
 }
@@ -25,18 +41,21 @@ export default {
 
 <template>
     <div class="container mb-4">
-        <select class="form-select" aria-label="Default select example" v-model="store.arraySelect"
-            @click.prevent="archetypesApi">
-            <option selected>Alien</option>
-            <option value="Albaz_Dragon">Albaz Dragon</option>
-            <option value="Grepher">Grepher</option>
+        <select class="form-select" aria-label="Default select example" v-model="store.arraySelect" @click="archetypesApi">
+            <option disabled value="">Please select one</option>
+            <option value="Alien">Alien</option>
+            <option value="Exodia">Exodia</option>
+            <option value="Libromancer">Libromancer</option>
             <option value="Train">Train</option>
+            <option value="Dark Magician">Dark Magician</option>
+            <option value="Cyber Dragon">Cyber Dragon</option>
+            <option value="Elemental HERO">Elemental HERO</option>
         </select>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .form-select {
-    width: 120px;
+    width: 200px;
 }
 </style>

@@ -32,6 +32,10 @@ export default {
 
     .card-body {
         background-color: hsl(33, 64%, 53%);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
     }
 }
 </style>

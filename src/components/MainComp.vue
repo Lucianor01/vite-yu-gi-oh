@@ -26,11 +26,11 @@ export default {
         <SelectCarte />
         <div class="container p-5" id="container-cards">
             <div class="bg-dark p-3">
-                <span class="text-light">Found {{ store.arraySelect.length }} cards</span>
+                <span class="text-light">Found {{ store.arrayCarte.length }} cards</span>
             </div>
             <div class="container">
                 <div class="row justify-content-between gap-4">
-                    <Carte v-for="(carte, index) in store.arraySelect" :key="index" :carteYuGiOh="carte" />
+                    <Carte v-for="(carte, index) in store.arrayCarte" :key="index" :carteYuGiOh="carte" />
                 </div>
             </div>
         </div>

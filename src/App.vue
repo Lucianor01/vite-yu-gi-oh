@@ -17,7 +17,6 @@ export default {
   },
   created() {
     // this.apiCarte
-    //this.archetypesApi
   },
   computed: {
     // apiCarte() {
