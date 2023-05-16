@@ -13,7 +13,15 @@ export default {
             store
         }
     },
+
     created() {
+        axios.get('https://db.ygoprodeck.com/api/v7/archetypes.php')
+            .then((res) => {
+                // console.log(res.data)
+
+                store.arrayArchetype = res.data
+
+            })
         this.archetypesApi
     },
     computed: {
@@ -21,9 +29,9 @@ export default {
 
             store.loadingData = true
 
-            if (store.arraySelect !== '') {
+            if (store.inputSelect !== '') {
 
-                axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.arraySelect}`)
+                axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?archetype=${store.inputSelect}`)
                     .then((res) => {
                         // console.log(res.data.data)
 
@@ -54,15 +62,11 @@ export default {
 <template>
     <LoaderComp v-if="store.loadingData" />
     <div class="container mb-4">
-        <select class="form-select" aria-label="Default select example" v-model="store.arraySelect" @click="archetypesApi">
+        <select class="form-select" aria-label="Default select example" v-model="store.inputSelect" @click="archetypesApi">
             <option disabled value="">Please select one</option>
-            <option value="Alien">Alien</option>
-            <option value="Exodia">Exodia</option>
-            <option value="Libromancer">Libromancer</option>
-            <option value="Train">Train</option>
-            <option value="Dark Magician">Dark Magician</option>
-            <option value="Cyber Dragon">Cyber Dragon</option>
-            <option value="Elemental HERO">Elemental HERO</option>
+            <option :value="elem.archetype_name" v-for="(elem, index) in store.arrayArchetype" :key="index">
+                {{ elem.archetype_name }}</option>
+
         </select>
     </div>
 </template>
